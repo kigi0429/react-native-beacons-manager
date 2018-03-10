@@ -19,6 +19,7 @@ import {
   Image
 }                         from 'react-native';
 import Beacons            from 'react-native-beacons-manager';
+import BeaconBroadcast from 'react-native-ibeacon-simulator'
 import {
   Avatar
 }                         from 'react-native-elements';
@@ -120,7 +121,14 @@ class BeaconsDemo extends Component<Props, State> {
     //
     // component state aware here - attach events
     //
-
+    BeaconBroadcast.checkTransmissionSupported()
+    .then(() => {
+      BeaconBroadcast.stopAdvertisingBeacon()
+      BeaconBroadcast.startAdvertisingBeaconWithString('7b44b47b-52a1-5381-90c2-f09b6838c5d4', '235214', 0, 0)
+    })
+    .catch((e) => {
+      /* handle return errors */
+    })
     // we need to wait for service connection to ensure synchronization:
     this.beaconsServiceDidConnect = Beacons.BeaconsEventEmitter.addListener(
       'beaconServiceConnected',
