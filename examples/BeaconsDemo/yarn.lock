@@ -3562,6 +3562,10 @@ react-native-elements@^0.18.0:
     opencollective "^1.0.3"
     prop-types "^15.5.8"
 
+react-native-ibeacon-simulator@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/react-native-ibeacon-simulator/-/react-native-ibeacon-simulator-1.0.10.tgz#4da565e6a3a1a61ca1b3e00c1e114436d876d53a"
+
 react-native-vector-icons@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.4.2.tgz#090f42ee0396c4cc4eae0ddaa518028ba8df40c7"

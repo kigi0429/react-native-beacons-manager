@@ -16,6 +16,7 @@ import {
 }                             from 'react-native';
 import Beacons                from 'react-native-beacons-manager';
 import BluetoothState         from 'react-native-bluetooth-state';
+import BeaconBroadcast        from 'react-native-ibeacon-simulator';
 import moment                 from 'moment';
 
 /**
@@ -23,7 +24,7 @@ import moment                 from 'moment';
 * @type {String} uuid
 */
 const UUID        = '7b44b47b-52a1-5381-90c2-f09b6838c5d4';
-const IDENTIFIER  = '123456';
+const IDENTIFIER  = 'fdgsdfsdfhs';
 const TIME_FORMAT = 'HH:mm:ss';
 const EMPTY_BEACONS_LISTS = {
   rangingList:      [],
@@ -82,20 +83,22 @@ class BeaconsDemo extends Component {
     // otherwise monitoring won't work
     Beacons.requestAlwaysAuthorization();
     Beacons.shouldDropEmptyRanges(true);
+    
     // Define a region which can be identifier + uuid,
     // identifier + uuid + major or identifier + uuid + major + minor
     // (minor and major properties are numbers)
     const region = { identifier, uuid };
+
     // Monitor for beacons inside the region
-    Beacons
-    .startMonitoringForRegion(region) // or like  < v1.0.7: .startRangingBeaconsInRegion(identifier, uuid)
-    .then(() => console.log('Beacons monitoring started succesfully'))
-    .catch(error => console.log(`Beacons monitoring not started, error: ${error}`));
+    // Beacons
+    // .startMonitoringForRegion(region) // or like  < v1.0.7: .startRangingBeaconsInRegion(identifier, uuid)
+    // .then(() => console.log('Beacons monitoring started succesfully'))
+    // .catch(error => console.log(`Beacons monitoring not started, error: ${error}`));
 
     // Range for beacons inside the region
     Beacons
     .startRangingBeaconsInRegion(region) // or like  < v1.0.7: .startRangingBeaconsInRegion(identifier, uuid)
-    .then(() => console.log('Beacons ranging started succesfully'))
+    .then(() => console.log('JBeacons ranging started succesfully'))
     .catch(error => console.log(`Beacons ranging not started, error: ${error}`));
 
     // update location to be able to monitor:
@@ -103,6 +106,9 @@ class BeaconsDemo extends Component {
   }
 
   componentDidMount() {
+    BeaconBroadcast.stopAdvertisingBeacon()
+    BeaconBroadcast.startAdvertisingBeaconWithString('7b44b47b-52a1-5381-90c2-f09b6838c5d4', '141234', 0, 0)
+
     // OPTIONAL: listen to authorization change
     this.authStateDidRangeEvent = Beacons.BeaconsEventEmitter.addListener(
       'authorizationStatusDidChange',
@@ -114,7 +120,7 @@ class BeaconsDemo extends Component {
       'beaconsDidRange',
       (data) => {
         this.setState({ message:  'beaconsDidRange event'});
-        // console.log('beaconsDidRange, data: ', data);
+        console.log('beaconsDidRange, data: ', data);
         const updatedBeaconsLists = this.updateBeaconList(data.beacons, 'rangingList');
         this._beaconsLists = updatedBeaconsLists;
         this.setState({ beaconsLists: this.state.beaconsLists.cloneWithRowsAndSections(this._beaconsLists)});
@@ -145,6 +151,7 @@ class BeaconsDemo extends Component {
         this.setState({ beaconsLists: this.state.beaconsLists.cloneWithRowsAndSections(this._beaconsLists)});
       }
     );
+
     // listen bluetooth state change event
     BluetoothState.subscribe(
       bluetoothState => this.setState({ bluetoothState: bluetoothState })

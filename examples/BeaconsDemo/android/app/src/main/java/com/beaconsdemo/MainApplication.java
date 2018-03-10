@@ -3,6 +3,7 @@ package com.beaconsdemo;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.ibeacon.simulator.BeaconBroadcastPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BeaconBroadcastPackage(),
             new VectorIconsPackage(),
             new BeaconsAndroidPackage()
       );

@@ -16,6 +16,7 @@
     "react-native-beacons-manager": "git+https://github.com/MacKentoch/react-native-beacons-manager.git",
     "react-native-bluetooth-state": "^2.0.0",
     "react-native-elements": "^0.18.0",
+    "react-native-ibeacon-simulator": "^1.0.10",
     "react-native-vector-icons": "^4.4.2"
   },
   "devDependencies": {
