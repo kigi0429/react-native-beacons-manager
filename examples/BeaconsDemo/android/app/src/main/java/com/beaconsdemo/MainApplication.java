@@ -6,12 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.ibeacon.simulator.BeaconBroadcastPackage;
 import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.ibeacon.simulator.BeaconBroadcastPackage;
-import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
-import com.ibeacon.simulator.BeaconBroadcastPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -35,12 +29,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new VectorIconsPackage(),
             new BeaconBroadcastPackage(),
-            new BeaconsAndroidPackage(),
-            new VectorIconsPackage(),
-            new BeaconBroadcastPackage(),
-            new BeaconsAndroidPackage(),
-            new BeaconBroadcastPackage(),
-            new VectorIconsPackage(),
             new BeaconsAndroidPackage()
       );
     }
